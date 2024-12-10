@@ -1,0 +1,49 @@
+body
+{
+    background-color: #0d1b2a;
+}
+.name
+{
+    margin-left: 2%;
+    color: #e0e1dd;
+}
+.head
+{
+    background-color: #1b263b;
+    padding: 0.002em;
+    /* border-radius: 2%; */
+    display: flex;
+    justify-content:space-between;
+}
+#add-blog
+{
+    height: fit-content;
+    margin: 2em;
+    text-decoration: none;
+    background-color: #e0e1dd;
+    color: black;
+    padding: 5px;
+}
+.welcome
+{
+    margin-top: 1%;
+    padding: 1%;
+    color: #e0e1dd;
+    /* display: flex; */
+    
+    /* align-items: center;
+    justify-content: center; */
+
+    /* background-image: url('/images/welcome.jpg');
+    background-size:cover; */
+
+    border: 2px solid white;
+    height: 50vw;
+    width: auto;
+}
+.welcome-text
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
