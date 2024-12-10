@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor</title>
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js"></script> -->
+  </head>
+  <body style="background-color: #000000;">
+
+    <textarea name="heading" id="heading-of-blog" placeholder="Heading" style="background-color: #353535a6; color: white; height: auto;width: 80%; margin-left: 10%; margin-bottom: 2%;"></textarea>
+    <br />
+    <textarea name="content" id="content-of-blog" placeholder="Write your blog content here" style="background-color: #353535a6; color: white; height: 400px; width: 80%; margin-left: 10%;"></textarea>
+    <textarea name="writer-of-blog" id="writer-of-blog" placeholder="Written by " style="background-color: #353535a6; color: white; height: auto; width: 40%; margin-left: 30%; margin-top: 4%;"></textarea>
+    <br><br><br>
+    <button id="submit" style="height: 30px; width: 10%; margin-left: 45%;">Add the blog</button>
+
+    <script>
+      console.log("H");
+    </script>
+    <script type="module">
+
+
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+      import { getDatabase, ref, set, get, child, } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDC1pPY2WVQOm67qdxrBhlG_bsy-P6V2Xw",
+        authDomain: "bloggs-a5718.firebaseapp.com",
+        databaseURL: "https://bloggs-a5718-default-rtdb.firebaseio.com",
+        projectId: "bloggs-a5718",
+        storageBucket: "bloggs-a5718.firebasestorage.app",
+        messagingSenderId: "166180271286",
+        appId: "1:166180271286:web:e3e211d25f9cc69d102217",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase();
+
+      console.log("mm");
+
+      function writeData(writer, heading_of_blog, content_of_blog) {
+        const reference = ref(db, "blog/" + writer);
+
+        set(reference, {
+          heading: heading_of_blog,
+          content: content_of_blog,
+        });
+      }
+document.getElementById("submit").addEventListener("click", ()=>{
+  console.log("HHHHHMMMMM....");
+  
+const contentTextArea = document.getElementById('content-of-blog');
+const headingTextArea = document.getElementById('heading-of-blog');
+const Writer = document.getElementById('writer-of-blog');
+let head= headingTextArea.value;
+let Content= contentTextArea.value;
+let BlogWriter= Writer.value;
+
+  writeData( BlogWriter , head, Content);
+});
+
+
+      async function readData(writer) {
+        try {
+          const dbRef = ref(db);
+          const snapshot = await get(child(dbRef, `blog/${writer}`));
+          // const data = snapshot.val();
+          console.log(snapshot.val());
+        } catch (error) {
+          console.error("Error : ", error);
+        }
+      }
+      readData("Klik");
+    </script>
+  </body>
+</html>
