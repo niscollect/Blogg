@@ -68,17 +68,17 @@ let BlogWriter= Writer.value;
 });
 
 
-      async function readData(writer) {
-        try {
-          const dbRef = ref(db);
-          const snapshot = await get(child(dbRef, `blog/${writer}`));
-          // const data = snapshot.val();
-          console.log(snapshot.val());
-        } catch (error) {
-          console.error("Error : ", error);
-        }
-      }
-      readData("Klik");
+      // // //  // // async function readData(writer) {
+      // // //  // //   try {
+      // // //  // //     const dbRef = ref(db);
+      // // //  // //     const snapshot = await get(child(dbRef, `blog/${writer}`));
+      // // //  // //     // const data = snapshot.val();
+      // // //  // //     console.log(snapshot.val());
+      // // //  // //   } catch (error) {
+      // // //  // //     console.error("Error : ", error);
+      // // //  // //   }
+      // // //  // // }
+      // // //  // // readData("Klik");
     </script>
   </body>
 </html>

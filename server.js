@@ -1,46 +1,93 @@
-// const express = require('express');
-// const path =  require('path');
+// // const express = require('express');
+// // const path =  require('path');
 
-// let initial_path = path.join(__dirname,  "public");
+// // let initial_path = path.join(__dirname,  "public");
 
-// const app= express();
+// // const app= express();
+// // app.use(express.static(initial_path));
+
+// // app.get('/', (req, res)=>{
+// //     res.sendFile(path.join(initial_path, "uploads/index.html"));
+// // });
+// // app.get('/editor.html', (req, res)=>{
+// //     res.sendFile(path.join(initial_path, "uploads/editor.html"));
+// // });
+
+// // app.listen("3000", ()=>{ 
+// //     console.log(`listening to port 3000`);  
+// // });
+
+// import express from 'express';
+// import path from 'path';
+// import { fileURLToPath } from 'url'; 
+
+// // Get the current file path (equivalent to __dirname in CommonJS)
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+
+// // Define the path to the 'public' directory
+// let initial_path = path.join(__dirname, 'public');
+
+// const app = express();
+
+// // Serve static files from the 'public' directory
 // app.use(express.static(initial_path));
 
-// app.get('/', (req, res)=>{
-//     res.sendFile(path.join(initial_path, "uploads/index.html"));
-// });
-// app.get('/editor.html', (req, res)=>{
-//     res.sendFile(path.join(initial_path, "uploads/editor.html"));
+// // Serve the 'index.html' from 'uploads'
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(initial_path, 'uploads', 'index.html'));
 // });
 
-// app.listen("3000", ()=>{ 
-//     console.log(`listening to port 3000`);  
+// // Serve the 'editor.html' from 'uploads'
+// app.get('/editor.html', (req, res) => {
+//     res.sendFile(path.join(initial_path, 'uploads', 'editor.html'));
 // });
+
+// // Start the server
+// app.listen(3000, () => { 
+//     console.log('Server is listening on port 3000');
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 import express from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url'; 
+import { fileURLToPath } from 'url';
 
 // Get the current file path (equivalent to __dirname in CommonJS)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Define the path to the 'public' directory
-let initial_path = path.join(__dirname, 'public');
-
+// Initialize the app
 const app = express();
 
-// Serve static files from the 'public' directory
-app.use(express.static(initial_path));
+// Serve static files from the current directory
+app.use(express.static(__dirname));
 
-// Serve the 'index.html' from 'uploads'
+// Serve the 'index.html' file
 app.get('/', (req, res) => {
-    res.sendFile(path.join(initial_path, 'uploads', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Serve the 'editor.html' from 'uploads'
+// Serve the 'editor.html' file
 app.get('/editor.html', (req, res) => {
-    res.sendFile(path.join(initial_path, 'uploads', 'editor.html'));
+    res.sendFile(path.join(__dirname, 'editor.html'));
 });
 
 // Start the server
